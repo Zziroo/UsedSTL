@@ -2,10 +2,13 @@
 //
 
 #include <iostream>
+#include <list>
 
 using namespace std;
 
 int main()
 {
+	cout << "$ list $" << endl;
+
 	cout << "$ DoubleLinkedList $" << endl;
 }

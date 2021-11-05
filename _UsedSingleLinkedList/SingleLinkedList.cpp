@@ -1,14 +1,90 @@
 #include "SingleLinkedList.h"
 
-Node::Node(int data, Node* next)
+SingleLinkedList::Node::Node(int data, Node* next)
 	: Data{ data }, Next{ next } 
 {
 }
 
-Node::~Node()
+SingleLinkedList::Node::~Node()
 {
 	Data = 0;
 	Next = nullptr;
+}
+
+SingleLinkedList::const_iterator::const_iterator(Node* p)
+	: _p{ p }
+{
+}
+
+SingleLinkedList::const_iterator::~const_iterator()
+{
+	_p = nullptr;
+}
+
+const int& SingleLinkedList::const_iterator::operator*() const
+{
+	return _p->Data;
+}
+
+const int* SingleLinkedList::const_iterator::operator->() const
+{
+	return &_p->Data;
+}
+
+SingleLinkedList::const_iterator& SingleLinkedList::const_iterator::operator++()
+{
+	_p = _p->Next;
+	return *this;
+}
+
+SingleLinkedList::const_iterator SingleLinkedList::const_iterator::operator++(int)
+{
+	auto temp = *this;
+	_p = _p->Next;
+	return temp;
+}
+
+bool SingleLinkedList::const_iterator::operator==(const const_iterator& rhs) const
+{
+	return _p == rhs._p;
+}
+
+bool SingleLinkedList::const_iterator::operator!=(const const_iterator& rhs) const
+{
+	return !(*this == rhs);
+}
+
+bool SingleLinkedList::const_iterator::operator==(nullptr_t p) const
+{
+	return _p == nullptr;
+}
+
+bool SingleLinkedList::const_iterator::operator!=(nullptr_t p) const
+{
+	return !(*this == nullptr);
+}
+
+int& SingleLinkedList::iterator::operator*() const
+{
+	return const_cast<int&>(const_iterator::operator*());
+}
+
+int* SingleLinkedList::iterator::operator->() const
+{
+	return const_cast<int*>(const_iterator::operator->());
+}
+
+SingleLinkedList::iterator& SingleLinkedList::iterator::operator++()
+{
+	SingleLinkedList::const_iterator::operator++();
+	return *this;
+}
+
+SingleLinkedList::iterator SingleLinkedList::iterator::operator++(int)
+{
+	iterator temp = *this;
+	const_iterator::operator++();
+	return temp;
 }
 
 SingleLinkedList::SingleLinkedList()
@@ -60,46 +136,48 @@ const int& SingleLinkedList::front() const
 	return *begin();
 }
 
-iterator SingleLinkedList::before_begin()
+SingleLinkedList::iterator SingleLinkedList::before_begin()
 {
 	return iterator(_head);
 }
 
-const iterator SingleLinkedList::before_begin() const
+const SingleLinkedList::iterator SingleLinkedList::before_begin() const
 {
 	return iterator(_head);
 }
 
-iterator SingleLinkedList::begin()
+SingleLinkedList::iterator SingleLinkedList::begin()
 {
 	return iterator(_head->Next);
 }
 
-const iterator SingleLinkedList::begin() const
+const SingleLinkedList::iterator SingleLinkedList::begin() const
 {
 	return iterator(_head->Next);
 }
 
-iterator SingleLinkedList::end()
+SingleLinkedList::iterator SingleLinkedList::end()
 {
 	return iterator(_end);
 }
 
-const iterator SingleLinkedList::end() const
+const SingleLinkedList::iterator SingleLinkedList::end() const
 {
 	return iterator(_end);
 }
 
-iterator SingleLinkedList::insert_after(iterator pos, int value)
+SingleLinkedList::iterator SingleLinkedList::insert_after(iterator pos, int value)
 {
 	Node* where = pos._p;
 	Node* newNode = new Node(value);
+
 	newNode->Next = where->Next;
 	where->Next = newNode;
+
 	return newNode;
 }
 
-iterator SingleLinkedList::erase_after(iterator pos)
+SingleLinkedList::iterator SingleLinkedList::erase_after(iterator pos)
 {
 	Node* where = pos._p;
 	Node* removed = where->Next;
@@ -139,80 +217,4 @@ bool SingleLinkedList::contains(int value) const
 		if (*iter == value) { return true; }
 	}
 	return false;
-}
-
-const_iterator::const_iterator(Node* p)
-	: _p{ p } 
-{
-}
-
-const_iterator::~const_iterator()
-{
-	_p = nullptr;
-}
-
-const int& const_iterator::operator*() const
-{
-	return _p->Data;
-}
-
-const int* const_iterator::operator->() const
-{
-	return &_p->Data;
-}
-
-const_iterator& const_iterator::operator++()
-{
-	_p = _p->Next;
-	return *this;
-}
-
-const_iterator const_iterator::operator++(int)
-{
-	auto temp = *this;
-	_p = _p->Next;
-	return temp;
-}
-
-bool const_iterator::operator==(const const_iterator& rhs) const
-{
-	return _p == rhs._p;
-}
-
-bool const_iterator::operator!=(const const_iterator& rhs) const
-{
-	return !(*this == rhs);
-}
-
-bool const_iterator::operator==(nullptr_t p) const
-{
-	return _p == nullptr;
-}
-
-bool const_iterator::operator!=(nullptr_t p) const
-{
-	return !(*this == nullptr);
-}
-
-int& iterator::operator*() const
-{
-	return const_cast<int&>(const_iterator::operator*());
-}
-
-int* iterator::operator->() const
-{
-	return const_cast<int*>(const_iterator::operator->());
-}
-
-iterator& iterator::operator++()
-{
-	const_iterator::operator++();
-	return *this;
-}
-
-iterator iterator::operator++(int)
-{
-	iterator temp = *this;
-	const_iterator::operator++();
-	return temp;
 }

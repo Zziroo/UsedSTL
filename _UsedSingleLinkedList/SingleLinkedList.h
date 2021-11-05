@@ -2,50 +2,51 @@
 
 #include <algorithm>
 
-struct Node
-{
-public:
-    Node(int data = 0, Node* next = nullptr);
-    Node(const Node&) = delete;
-    Node& operator=(const Node&) = delete;
-    ~Node();
-
-    int     Data = 0;
-    Node*   Next = nullptr;
-};
-
-class const_iterator
-{
-public:
-    const_iterator(Node* p = nullptr);
-    ~const_iterator();
-
-    const int& operator*() const;
-    const int* operator->() const;
-    const_iterator& operator++();
-    const_iterator operator++(int);
-    bool operator==(const const_iterator& rhs) const;
-    bool operator!=(const const_iterator& rhs) const;
-    bool operator==(nullptr_t p) const;
-    bool operator!=(nullptr_t p) const;
-
-public:
-    Node * _p = nullptr;
-};
-
-class iterator : public const_iterator
-{
-public:
-    using const_iterator::const_iterator;
-
-    int& operator*() const;
-    int* operator->() const;
-    iterator& operator++();
-    iterator operator++(int);
-};
-
 class SingleLinkedList
 {
+public:
+    struct Node
+    {
+    public:
+        Node(int data = 0, Node* next = nullptr);
+        Node(const Node&) = delete;
+        Node& operator=(const Node&) = delete;
+        ~Node();
+
+        int     Data = 0;
+        Node*   Next = nullptr;
+    };
+
+    class const_iterator
+    {
+    public:
+        const_iterator(Node* p = nullptr);
+        ~const_iterator();
+
+        const int& operator*() const;
+        const int* operator->() const;
+        const_iterator& operator++();
+        const_iterator operator++(int);
+        bool operator==(const const_iterator& rhs) const;
+        bool operator!=(const const_iterator& rhs) const;
+        bool operator==(nullptr_t p) const;
+        bool operator!=(nullptr_t p) const;
+
+    public:
+        Node* _p = nullptr;
+    };
+
+    class iterator : public const_iterator
+    {
+    public:
+        using const_iterator::const_iterator;
+
+        int& operator*() const;
+        int* operator->() const;
+        iterator& operator++();
+        iterator operator++(int);
+    };
+
 public:
     SingleLinkedList();                                         // 기본 생성자
     explicit SingleLinkedList(size_t count);                    // count만큼의 요소를 갖고 있는 컨테이너를 만드는 생성자
