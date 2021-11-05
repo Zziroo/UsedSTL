@@ -42,8 +42,8 @@ public:
 
 	void		clear();						// 컨테이너를 비운다.
 
-	int* insert(int* pos, int value);	// pos 이전 위치에 value를 삽입한다. value가 삽입된 곳을 가리키는 포인터를 반환한다.
-	int* erase(int* pos);				// pos에 위치한 원소를 지운다. 삭제된 요소의 다음 포인터를 반환한다.
+	int*		insert(int* pos, int value);	// pos 이전 위치에 value를 삽입한다. value가 삽입된 곳을 가리키는 포인터를 반환한다.
+	int*		erase(int* pos);				// pos에 위치한 원소를 지운다. 삭제된 요소의 다음 포인터를 반환한다.
 	void		push_back(int value);			// 컨테이너의 맨 끝에 원소를 추가한다.
 	void		pop_back();						// 컨테이너의 마지막 원소를 삭제한다.
 

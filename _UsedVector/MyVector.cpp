@@ -171,7 +171,7 @@ int* MyVector::erase(int* pos)
     // 컨테이너가 비었다면?
     if (empty()) { return end(); }
     // 제거
-    for (int* iter = pos; iter != last; +iter) { *iter = *(iter + 1); }
+    for (int* iter = pos; iter != last; ++iter) { *iter = *(iter + 1); }
     --_size;
     return pos;
 }
