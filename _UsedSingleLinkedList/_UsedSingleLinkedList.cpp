@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <forward_list>
+#include "SingleLinkedList.h"
 
 using namespace std;
 
@@ -63,4 +64,39 @@ int main()
 	cout << endl << endl;
 
 	cout << "$ SingleLinkedList $ " << endl;
+	SingleLinkedList myList;
+	SingleLinkedList myList2(5);
+
+	myList.push_front(1);
+	myList.push_front(2);
+	myList.push_front(3);
+	myList.pop_front();
+
+	cout << myList.front() << endl;
+	for (int elem : myList)
+	{
+		cout << elem << ' ';
+	}
+	cout << endl;
+
+	auto iter2 = myList2.insert_after(myList2.begin(), 3);
+	++iter2;
+	iter2 = myList2.insert_after(iter2, 4);
+	myList2.erase_after(iter2);
+
+	for (int elem : myList2)
+	{
+		cout << elem << ' ';
+	}
+	cout << endl;
+
+	cout << boolalpha << myList2.empty() << endl;
+
+	SingleLinkedList myList3(myList);
+
+	for (int elem : myList3)
+	{
+		cout << elem << ' ';
+	}
+	cout << endl << endl;
 }
