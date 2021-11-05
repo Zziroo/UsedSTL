@@ -13,10 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Vector">
+      <UniqueIdentifier>{91235a84-f860-4ef8-987b-b846fc4f42ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="_UsedSTL.cpp">
+    <ClCompile Include="_UsedVector.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MyVector.cpp">
+      <Filter>Vector</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyVector.h">
+      <Filter>Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateVector.h">
+      <Filter>Vector</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
