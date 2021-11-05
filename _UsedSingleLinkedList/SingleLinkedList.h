@@ -7,7 +7,6 @@ class SingleLinkedList
 public:
     struct Node
     {
-    public:
         Node(int data = 0, Node* next = nullptr);
         Node(const Node&) = delete;
         Node& operator=(const Node&) = delete;
@@ -63,10 +62,10 @@ public:
 
     // 시작 요소를 가리키는 반복자를 반환한다.
     iterator        begin();
-    const iterator  begin() const;
+    const_iterator  begin() const;
     // 끝 다음 요소를 가리키는 반복자를 반환한다.
     iterator        end();
-    const iterator  end() const;
+    const_iterator  end() const;
 
     // pos 다음에 value를 삽입한다.
     // 삽입된 요소를 가리키는 반복자를 반환한다.

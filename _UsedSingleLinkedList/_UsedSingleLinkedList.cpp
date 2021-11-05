@@ -73,6 +73,7 @@ int main()
 	myList.pop_front();
 
 	cout << myList.front() << endl;
+
 	for (int elem : myList)
 	{
 		cout << elem << ' ';

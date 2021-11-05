@@ -151,7 +151,7 @@ SingleLinkedList::iterator SingleLinkedList::begin()
 	return iterator(_head->Next);
 }
 
-const SingleLinkedList::iterator SingleLinkedList::begin() const
+SingleLinkedList::const_iterator SingleLinkedList::begin() const
 {
 	return iterator(_head->Next);
 }
@@ -161,7 +161,7 @@ SingleLinkedList::iterator SingleLinkedList::end()
 	return iterator(_end);
 }
 
-const SingleLinkedList::iterator SingleLinkedList::end() const
+SingleLinkedList::const_iterator SingleLinkedList::end() const
 {
 	return iterator(_end);
 }
