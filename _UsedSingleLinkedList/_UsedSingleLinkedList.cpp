@@ -11,91 +11,91 @@ int main()
 {
 	cout << "$ foward List $" << endl;
 
-	forward_list<int> list;
-	forward_list<int> list2(5);
+	forward_list<int> lst;
+	forward_list<int> lst2(5);
 	
-	list.push_front(1);
+	lst.push_front(1);
 	// [1]
-	list.push_front(2);
+	lst.push_front(2);
 	// [2] -> [1]
-	list.push_front(3);
+	lst.push_front(3);
 	// [3] -> [2] -> [1]
-	list.pop_front();
+	lst.pop_front();
 	// [2] -> [1]
 	
 	// 2
-	cout << list.front() << endl;
+	cout << lst.front() << endl;
 	
 	// 2 1
-	for (int elem : list)
+	for (int elem : lst)
 	{
 		cout << elem << ' ';
 	}
 	cout << endl;
 	
 	// [0] -> [0] -> [0] -> [0] -> [0]
-	auto iter = list2.insert_after(list2.begin(), 3);
+	auto iter = lst2.insert_after(lst2.begin(), 3);
 	// [0] -> [3] -> [0] -> [0] -> [0] -> [0] 
 	//		         iter
 	
 	++iter;
 	
-	iter = list2.insert_after(iter, 4);
+	iter = lst2.insert_after(iter, 4);
 	// [0] -> [3] -> [0] -> [4] -> [0] -> [0] -> [0]
 	//						iter
 	
-	list2.erase_after(iter);
+	lst2.erase_after(iter);
 	// [0] -> [3] -> [0] -> [4] -> [0] -> [0]
 	
-	for (int elem : list2)
+	for (int elem : lst2)
 	{
 		cout << elem << ' ';
 	}
 	cout << endl;
 	
-	cout << boolalpha << list2.empty() << endl;
+	cout << boolalpha << lst2.empty() << endl;
 	
-	forward_list<int> list3(list);
+	forward_list<int> lst3(lst);
 	
-	for (int elem : list3)
+	for (int elem : lst3)
 	{
 		cout << elem << ' ';
 	}
 	cout << endl << endl;
 
 	cout << "$ SingleLinkedList $ " << endl;
-	SingleLinkedList myList;
-	SingleLinkedList myList2(5);
+	SingleLinkedList myLst;
+	SingleLinkedList myLst2(5);
 
-	myList.push_front(1);
-	myList.push_front(2);
-	myList.push_front(3);
-	myList.pop_front();
+	myLst.push_front(1);
+	myLst.push_front(2);
+	myLst.push_front(3);
+	myLst.pop_front();
 
-	cout << myList.front() << endl;
+	cout << myLst.front() << endl;
 
-	for (int elem : myList)
+	for (int elem : myLst)
 	{
 		cout << elem << ' ';
 	}
 	cout << endl;
 
-	auto iter2 = myList2.insert_after(myList2.begin(), 3);
+	auto iter2 = myLst2.insert_after(myLst2.begin(), 3);
 	++iter2;
-	iter2 = myList2.insert_after(iter2, 4);
-	myList2.erase_after(iter2);
+	iter2 = myLst2.insert_after(iter2, 4);
+	myLst2.erase_after(iter2);
 
-	for (int elem : myList2)
+	for (int elem : myLst2)
 	{
 		cout << elem << ' ';
 	}
 	cout << endl;
 
-	cout << boolalpha << myList2.empty() << endl;
+	cout << boolalpha << myLst2.empty() << endl;
 
-	SingleLinkedList myList3(myList);
+	SingleLinkedList myLst3(myLst);
 
-	for (int elem : myList3)
+	for (int elem : myLst3)
 	{
 		cout << elem << ' ';
 	}

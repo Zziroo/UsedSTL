@@ -24,6 +24,7 @@ public:
 	{
 		for (size_t i = 0; i < size(); ++i) { _container[i] = other[i]; }
 	}
+
 	TemplateVector& operator=(const TemplateVector& rhs)
 	{
 		if (this != &rhs) {

@@ -107,7 +107,8 @@ SingleLinkedList::SingleLinkedList(const SingleLinkedList& other)
 
 SingleLinkedList& SingleLinkedList::operator=(const SingleLinkedList& rhs)
 {
-	if (this != &rhs) {
+	if (this != &rhs) 
+	{
 		SingleLinkedList temp(rhs);
 		std::swap(_head, temp._head);
 		std::swap(_end, temp._end);
@@ -213,7 +214,8 @@ void SingleLinkedList::clear()
 
 bool SingleLinkedList::contains(int value) const
 {
-	for (auto iter = begin(); iter != end(); ++iter) {
+	for (auto iter = begin(); iter != end(); ++iter) 
+	{
 		if (*iter == value) { return true; }
 	}
 	return false;
