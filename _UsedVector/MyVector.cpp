@@ -35,7 +35,8 @@ MyVector::MyVector(MyVector&& other)
 
 MyVector& MyVector::operator=(MyVector&& other)
 {
-    if (this != &other) {
+    if (this != &other) 
+    {
         MyVector temp(std::move(other));
         std::swap(_container, temp._container);
         std::swap(_size, temp._size);
@@ -129,7 +130,8 @@ bool MyVector::empty() const
 
 bool MyVector::contains(int value)
 {
-    for (int* iter = begin(); iter != end(); ++iter) {
+    for (int* iter = begin(); iter != end(); ++iter) 
+    {
         if (*iter == value) { return true; }
     }
     return false;
@@ -149,12 +151,14 @@ int* MyVector::insert(int* pos, int value)
     // 삽입하려는 위치에서 시작 위치까지의 거리 : dist
     ptrdiff_t dist = pos - begin();
     // 비어있을 때
-    if (_size == 0) {
+    if (_size == 0) 
+    {
         reserve(1);
         pos = begin() + dist;
     }
     // 가득찼을 때
-    else if (_size == _capacity) {
+    else if (_size == _capacity) 
+    {
         reserve(_capacity * 2);
         pos = begin() + dist;
     }
