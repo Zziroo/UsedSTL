@@ -207,7 +207,7 @@ DoubleLinkedList::iterator DoubleLinkedList::erase(iterator pos)
 	Node* nextNode = where->Next;
 
 	if (prevNode != nullptr) { prevNode->Next = nextNode; }
-	if (nextNode != nullptr) { nextNode->Next = prevNode; }
+	if (nextNode != nullptr) { nextNode->Prev = prevNode; }
 	if (pos == _head) { _head = nextNode; }
 
 	delete where;
