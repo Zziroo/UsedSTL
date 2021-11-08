@@ -29,5 +29,8 @@
     <ClInclude Include="DoubleLinkedList.h">
       <Filter>DoubleLinkedList</Filter>
     </ClInclude>
+    <ClInclude Include="TemplateDoubleLinkedList.h">
+      <Filter>DoubleLinkedList</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
