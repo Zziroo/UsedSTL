@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 MyVector::MyVector(size_t count)
-    :_container{ new int[count] }, _size{ count }, _capacity{ count }
+    : _container{ new int[count] }, _size{ count }, _capacity{ count }
 {
     for (size_t i = 0; i < size(); ++i) { _container[i] = {}; }
 }

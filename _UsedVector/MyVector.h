@@ -30,7 +30,7 @@ public:
 	// pos에 위치한 원소의 참조를 반환한다.
 	int& operator[](size_t pos);
 	const int& operator[](size_t pos) const;
-	// pos에 위치한 참조를 반환한다. 만약 pos가 범위에서 벗어나면 std::out_of_range 예외가 던져진다.
+	// pos에 위치한 원소의 참조를 반환한다. 만약 pos가 범위에서 벗어나면 std::out_of_range 예외가 던져진다.
 	int& at(size_t pos);
 	const int& at(size_t pos) const;
 

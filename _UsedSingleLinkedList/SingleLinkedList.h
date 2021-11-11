@@ -71,7 +71,7 @@ public:
     // 삽입된 요소를 가리키는 반복자를 반환한다.
     iterator        insert_after(iterator pos, int value);
     // pos 다음 요소를 삭제한다.
-    // 삭제된 요소의 다음 요소를 가리키는 반복자를 반환한다.
+    // 삭제된 요소를 가리키는 반복자를 반환한다.
     // 아무 요소도 없으면 end()를 반환한다.
     iterator        erase_after(iterator pos);
     

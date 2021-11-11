@@ -145,9 +145,6 @@ DoubleLinkedList::~DoubleLinkedList()
 	_end = nullptr;
 
 	_head = 0;
-	//delete _head;
-	//_head = nullptr;
-
 	_size = 0;
 }
 
@@ -198,10 +195,7 @@ DoubleLinkedList::iterator DoubleLinkedList::insert(iterator pos, int value)
 	Node* prevNode = where->Prev;
 
 	where->Prev = newNode;
-	if (prevNode != nullptr) 
-	{
-		prevNode->Next = newNode;
-	}
+	if (prevNode != nullptr) { prevNode->Next = newNode; }
 
 	newNode->Prev = prevNode;
 	newNode->Next = where;

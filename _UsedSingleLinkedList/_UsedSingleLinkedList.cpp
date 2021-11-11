@@ -67,17 +67,25 @@ int main()
 	SingleLinkedList myLst;
 	SingleLinkedList myLst2(5);
 
-	myLst.push_front(1);
-	myLst.push_front(2);
-	myLst.push_front(3);
-	myLst.pop_front();
+	myLst.push_front(1);					// [1]
+	myLst.push_front(2);					// [2] [1]
+	myLst.push_front(3);					// [3] [2] [1]
+	myLst.push_front(4);					// [4] [3] [2] [1]
+	myLst.push_front(5);					// [5] [4] [3] [2] [1]
+	myLst.pop_front();						// [4] [3] [2] [1]
 
-	cout << myLst.front() << endl;
+	cout << myLst.front() << endl;			// [4]
 
+	// 4 3 2 1
 	for (int elem : myLst)
 	{
 		cout << elem << ' ';
 	}
+	cout << endl << endl;
+
+	auto tempIter = myLst.begin()._p;
+	cout << "제거할 요소 : " << tempIter->Data << endl;							// [4]
+	cout << "제거 후 Data : " << myLst.erase_after(tempIter)._p->Data << endl;	// [3]
 	cout << endl;
 
 	auto iter2 = myLst2.insert_after(myLst2.begin(), 3);
