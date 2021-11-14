@@ -9,6 +9,16 @@
 
 using namespace std;
 
+int LinearSearch(const vector<int>& vec, int value)
+{
+	for (size_t i = 0; i < vec.size(); ++i)
+	{
+		if (vec[i] == value) { return i; }
+	}
+
+	return -1;
+}
+
 int BinarySearch(const vector<int>& vec, int value)
 {
     int s = 0, e = vec.size();
@@ -43,20 +53,36 @@ int main()
 	random_device rd;
 	mt19937 gen(rd());
 	uniform_int_distribution<> distrib(1, vec.size());
-	
+
 	{
 		int value = distrib(gen);
-		printf("BinarySearch Test\n");
-		printf("Value : %d, Index : %d\n", value, BinarySearch(vec, value));
+		printf("LinearSearch Test\n");
+		printf("Value : %d, Index : %d\n", value, LinearSearch(vec, value));
 	}
 	
 	clock_t start = clock();
 	for (int i = 0; i < 1000; ++i)
 	{
 		int value = distrib(gen);
-		BinarySearch(vec, value);
+		LinearSearch(vec, value);
 	}
 	clock_t end = clock();
+	printf("%f sec\n", (end - start) / static_cast<double>(CLOCKS_PER_SEC));
+	
+	puts("-------------------------------------------");
+	{
+		int value = distrib(gen);
+		printf("BinarySearch Test\n");
+		printf("Value : %d, Index : %d\n", value, BinarySearch(vec, value));
+	}
+	
+	start = clock();
+	for (int i = 0; i < 1000; ++i)
+	{
+		int value = distrib(gen);
+		BinarySearch(vec, value);
+	}
+	end = clock();
 	printf("%f sec\n", (end - start) / static_cast<double>(CLOCKS_PER_SEC));
 	
 	puts("-------------------------------------------");
