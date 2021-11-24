@@ -4,6 +4,7 @@
 #include <iostream>
 #include <set>
 #include "BinarySearchTree.h"
+#include "TemplateBinarySearchTree.h"
 
 
 using namespace std;
@@ -89,8 +90,63 @@ int main()
 	// 3
 	cout << "HeightBFS : " << mySet.heightBFS() << "\t" << "HeightDFS : " << mySet.heightDFS() << "\n";
 
+	// false
+	cout << mySet.empty() << "\n";
+
 	mySet.clear();
 
 	// true
 	cout << mySet.empty() << "\n";
+
+	puts("-------------------------------------");
+
+	TemplateBinarySearchTree<int> myTemplateSet;
+
+	myTemplateSet.insert(8);
+	myTemplateSet.insert(3);
+	myTemplateSet.insert(2);
+	myTemplateSet.insert(5);
+	myTemplateSet.insert(4);
+	myTemplateSet.insert(10);
+	myTemplateSet.insert(14);
+	myTemplateSet.insert(11);
+	myTemplateSet.insert(16);
+
+	if (myTemplateSet.find(2)) { cout << "Found 2\n"; }
+
+	if (myTemplateSet.find(12) == nullptr) { cout << "Not Found 12\n"; }
+
+	// 9
+	cout << "Size : " << myTemplateSet.size() << "\n";
+
+	myTemplateSet.erase(4);
+
+	// 8
+	cout << "Size : " << myTemplateSet.size() << "\n";
+
+	if (myTemplateSet.find(4) == nullptr) { cout << "Not Found 4\n"; }
+
+	// 8 3 2 5 10 14 11 16
+	myTemplateSet.traverseByPreOrder();
+	puts("");
+	// 2 3 5 8 10 11 14 16
+	myTemplateSet.traverseByInOrder();
+	puts("");
+	// 2 5 3 11 16 14 10 8
+	myTemplateSet.traverseByPostOrder();
+	puts("");
+	// 8 3 10 2 5 14 11 16
+	myTemplateSet.traverseByLevelOrder();
+	puts("");
+
+	// 3
+	cout << "HeightBFS : " << myTemplateSet.heightBFS() << "\t" << "HeightDFS : " << myTemplateSet.heightDFS() << "\n";
+
+	// false
+	cout << myTemplateSet.empty() << "\n";
+
+	myTemplateSet.clear();
+
+	// true
+	cout << myTemplateSet.empty() << "\n";
 }
