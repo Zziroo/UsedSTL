@@ -5,11 +5,6 @@
 template<typename T>
 class TemplateVector
 {
-private:
-	T* _container = nullptr;
-	size_t	_size = 0;
-	size_t	_capacity = 0;
-
 public:
 	TemplateVector() = default;
 
@@ -55,90 +50,45 @@ public:
 		return *this;
 	}
 
-	~TemplateVector()
-	{
-		clear();
-	}
+	~TemplateVector() { clear(); }
 
-	T* begin()
-	{
-		return _container;
-	}
+	T*			begin() { return _container; }
+	const T*	begin() const { return _container; }
 
-	const T* begin() const
-	{
-		return _container;
-	}
+	T*			end() { return _container + _size; }
+	const T*	end() const { return _container + _size; }
 
-	T* end()
-	{
-		return _container + _size;
-	}
+	T&			front() { return _container[0]; }
+	const T&	front() const { return _container[0]; }
 
-	const T* end() const
-	{
-		return _container + _size;
-	}
+	T&			back() { return _container[_size - 1]; }
+	const T&	back() const { return _container[_size - 1]; }
 
-	T& front()
-	{
-		return _container[0];
-	}
+	T&			operator[](size_t pos) { return _container[pos]; }
+	const T&	operator[](size_t pos) const { return _container[pos]; }
 
-	const T& front() const
-	{
-		return _container[0];
-	}
-
-	T& back()
-	{
-		return _container[_size - 1];
-	}
-
-	const T& back() const
-	{
-		return _container[_size - 1];
-	}
-
-	T& operator[](size_t pos)
-	{
-		return _container[pos];
-	}
-
-	const T& operator[](size_t pos) const
-	{
-		return _container[pos];
-	}
-
-	T& at(size_t pos)
+	T&			at(size_t pos)
 	{
 		if (pos >= _size) { throw std::out_of_range("Out of Range! !"); }
 		return _container[pos];
 	}
 
-	const T& at(size_t pos) const
+	const T&	at(size_t pos) const
 	{
 		if (pos >= _size) { throw std::out_of_range("Out of Range! !"); }
 		return _container[pos];
 	}
 
-	size_t size() const
-	{
-		return _size;
-	}
+	size_t		size() const { return _size; }
+	size_t		capacity() const { return _capacity; }
 
-	size_t capacity() const
-	{
-		return _capacity;
-	}
-
-	bool empty() const
+	bool		empty() const
 	{
 		if (_size == 0) { return true; }
 		else { return false; }
 	}
 
-	bool contains(int value)
+	bool		contains(int value)
 	{
 		for (int* iter = begin(); iter != end(); ++iter) {
 			if (*iter == value) { return true; }
@@ -146,7 +96,7 @@ public:
 		return false;
 	}
 
-	void clear()
+	void		clear()
 	{
 		delete[] _container;
 		_container = nullptr;
@@ -155,7 +105,7 @@ public:
 		_capacity = 0;
 	}
 
-	T* insert(T* pos, const T& value)
+	T*			insert(T* pos, const T& value)
 	{
 		// 삽입하려는 위치에서 시작 위치까지의 거리 : dist
 		T dist = pos - begin();
@@ -176,7 +126,7 @@ public:
 		return pos;
 	}
 
-	T* erase(T* pos)
+	T*			erase(T* pos)
 	{
 		T* last = end() - 1;
 		// 컨테이너가 비었다면?
@@ -187,17 +137,11 @@ public:
 		return pos;
 	}
 
-	void push_back(const T& value)
-	{
-		insert(end(), value);
-	}
+	void		push_back(const T& value) { insert(end(), value); }
 
-	void pop_back()
-	{
-		erase(end() - 1);
-	}
+	void		pop_back() { erase(end() - 1); }
 
-	void reserve(T newCapacity)
+	void		reserve(T newCapacity)
 	{
 		// 예외처리
 		if (newCapacity <= _capacity) { return; }
@@ -211,4 +155,9 @@ public:
 		_container = newContainer;
 		_capacity = newCapacity;
 	}
+
+private:
+	T*			_container = nullptr;
+	size_t		_size = 0;
+	size_t		_capacity = 0;
 };
