@@ -13,8 +13,8 @@ public:
 	{
 		Node(int data = 0, Node* parent = nullptr, Node* left = nullptr, Node* right = nullptr)
 			:Data{ data }, Parent{ parent }, Left{ left }, Right{ right } {}
-		Node(const Node&) = default;
-		Node& operator=(const Node&) = default;
+		Node(const Node&) = delete;
+		Node& operator=(const Node&) = delete;
 		~Node()
 		{
 			Parent = nullptr;
